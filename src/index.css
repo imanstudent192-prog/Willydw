@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    --primary: 220 13% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 210 40% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 210 40% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom professional tokens */
+    --navy: 220 13% 18%;
+    --gold: 210 40% 50%;
+    --gold-light: 210 50% 65%;
+    
+    /* Professional Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 13% 18%) 0%, hsl(220 20% 25%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(210 40% 50%) 0%, hsl(210 50% 65%) 100%);
+    --gradient-overlay: linear-gradient(180deg, hsl(220 13% 18% / 0.8) 0%, hsl(220 13% 18% / 0.4) 100%);
+    --gradient-background: linear-gradient(135deg, hsl(0 0% 98%) 0%, hsl(220 13% 97%) 100%);
+    
+    /* Professional Shadows */
+    --shadow-soft: 0 2px 20px hsl(220 13% 18% / 0.06);
+    --shadow-medium: 0 4px 30px hsl(220 13% 18% / 0.1);
+    --shadow-gold: 0 8px 40px hsl(210 40% 50% / 0.15);
+    --shadow-professional: 0 10px 50px hsl(220 13% 18% / 0.08);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 208 64% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 208 54% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 208 54% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 42 40% 58%;
+    --primary-foreground: 208 64% 15%;
+
+    --secondary: 208 54% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 208 54% 20%;
+    --muted-foreground: 208 20% 70%;
+
+    --accent: 42 40% 58%;
+    --accent-foreground: 208 64% 15%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 208 54% 20%;
+    --input: 208 54% 20%;
+    --ring: 42 40% 58%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--gradient-background);
+    background-attachment: fixed;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border border-white/30;
+    box-shadow: var(--shadow-professional);
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:-translate-y-2;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .hover-lift:hover {
+    box-shadow: var(--shadow-professional);
+  }
+  
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--gold-light))];
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  /* Premium depth + 3D utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .tilt-soft {
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+    will-change: transform;
+  }
+  .tilt-glow:hover {
+    box-shadow: 0 10px 30px hsl(var(--gold) / 0.25), 0 2px 10px hsl(var(--navy) / 0.2);
+  }
+  .gold-glow {
+    box-shadow: var(--shadow-gold);
+  }
+  .subtle-glow {
+    box-shadow: 0 10px 30px hsl(208 64% 15% / 0.08);
+  }
+  .parallax-layer {
+    will-change: transform;
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Auto-scroll marquee utilities for testimonials */
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: 200%;
+    animation: marquee-left 30s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Professional animations */
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(210 40% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(210 40% 50% / 0.5);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Professional background patterns */
+  .professional-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(210 40% 50% / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(220 13% 18% / 0.02) 0%, transparent 50%);
+  }
+}

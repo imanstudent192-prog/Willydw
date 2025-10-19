@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(210 40% 50%)"/>
+      <stop offset="100%" stop-color="hsl(210 50% 65%)"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="hsl(0 0% 100%)"/>
+  <g fill="none" stroke="url(#g)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Base building -->
+    <rect x="18" y="18" width="28" height="34" rx="2" fill="hsl(210 40% 98%)" stroke="url(#g)"/>
+    <!-- Windows -->
+    <path d="M24 24h6M34 24h6M24 30h6M34 30h6M24 36h6M34 36h6"/>
+    <!-- Door -->
+    <rect x="28" y="38" width="8" height="14" rx="1.5" fill="hsl(210 40% 96%)"/>
+    <!-- Roof line -->
+    <path d="M16 20l16-10 16 10"/>
+  </g>
+</svg>
+
